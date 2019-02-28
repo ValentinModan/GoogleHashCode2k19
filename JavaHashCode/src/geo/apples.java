@@ -2,13 +2,8 @@ package geo;
 
 public class apples {
 	public static void main (String[] args) {
-		write_to_file m = new write_to_file();
-		m.openFile();
-		m.addRecords();
-		m.closeFile();
 		
-		
-		readfromfile r = new readfromfile();
+		read r = new read();
 		r.openFile();
 		r.readFile();
 		r.closeFile();
