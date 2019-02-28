@@ -13,7 +13,7 @@ public class ReadFromFile {
 
     public void openFile() {
         try {
-            s = new Scanner(new File("a_example.txt"));
+            s = new Scanner(new File("b_lovely_landscapes.txt"));
         } catch (Exception e) {
             System.out.println("could not find file");
         }
@@ -23,7 +23,7 @@ public class ReadFromFile {
         if (s.hasNext()) {
             String num1 = s.next();
             int num = Integer.parseInt(num1);
-            System.out.println(num);
+
 
             //set picture number
             AllPictures.setPictureNumber(num);
@@ -35,15 +35,11 @@ public class ReadFromFile {
 
 
                 String position = s.next();
-                System.out.print(position + " "); //position means horizotal or vertical
-
-
 
                 String no_of_tags1 = s.next();
 
 
                 int no_of_tags = Integer.parseInt(no_of_tags1);
-                System.out.print(no_of_tags + " ");
                 for (int j = 0; j < no_of_tags; j++) {
                     try {
                         String crttag = s.next();
@@ -52,9 +48,7 @@ public class ReadFromFile {
                         picture.addTag(crttag);
 
 
-                        System.out.print(crttag + " ");
                     } catch (Exception ex) {
-                        System.out.println(ex);
                     }
 
 
@@ -73,8 +67,6 @@ public class ReadFromFile {
                     picture.setHorizontal(false);
                     AllPictures.addVerticalPicture(picture);
                 }
-
-                System.out.println(" ");
             }
 
             //Iterator<String> it = tags.iterator();

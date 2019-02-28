@@ -33,4 +33,15 @@ public class Slide {
     public void setSecond(Picture second) {
         this.second = second;
     }
+
+    @Override
+    public String toString() {
+        return "Slide{" +
+                "isVertical=" + isVertical +
+                ", first=" + first +
+                ", second=" + second +
+                '}';
+    }
+
+
 }

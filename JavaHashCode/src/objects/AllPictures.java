@@ -5,11 +5,21 @@ import java.util.List;
 
 public class AllPictures {
 
-    private static List<Picture> horizontalPictureList = new ArrayList<>();
+    public static List<Picture> horizontalPictureList = new ArrayList<>();
 
-    private static List<Picture> verticalPictureList = new ArrayList<>();
+    public static List<Picture> verticalPictureList = new ArrayList<>();
+
+    public static List<Picture> horizontalPictureListAux = new ArrayList<>();
+
+    public static List<Picture> verticalPictureListAux = new ArrayList<>();
 
     private static int pictureNumber;
+
+    public static void copy()
+    {
+        horizontalPictureList = horizontalPictureListAux;
+        verticalPictureList = verticalPictureListAux;
+    }
 
     public static int getPictureNumber() {
         return pictureNumber;
