@@ -1,12 +1,8 @@
 import geo.Apples;
-import geo.ReadFromFile;
+import geo.write_to_file;
 import objects.AllPictures;
-import objects.Picture;
 import objects.SlideShow;
 import rng.SlideShowGenerator;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class Main {
 
@@ -41,5 +37,11 @@ public class Main {
         slideShowFinal.displaySlideShow();
 
         System.out.println(slideShowFinal.computeSum());
+
+        write_to_file wtf = new write_to_file();
+
+        wtf.openFile();
+        wtf.addRecords(slideShowFinal);
+        wtf.closeFile();
     }
 }

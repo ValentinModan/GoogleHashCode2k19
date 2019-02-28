@@ -9,11 +9,16 @@ public class SlideShow {
 
 
     private static List<Picture> pictureList;
-    private static List<Slide> slideList;
 
-    private List<Picture> pictureList;
-    public List<Slide> slideList = new ArrayList<>();
+    public static List<Slide> slideList = new ArrayList<>();
 
+    public static List<Slide> getSlideList() {
+        return slideList;
+    }
+
+    public void setSlideList(List<Slide> slideList) {
+        this.slideList = slideList;
+    }
 
     public void addSlide(Slide slide) {
         slideList.add(slide);
@@ -37,9 +42,6 @@ public class SlideShow {
 
     }
 
-    public static List<Slide> getSlideList() {
-        return slideList;
-    }
 
     public static List<Picture> getPictureList() {
         return pictureList;

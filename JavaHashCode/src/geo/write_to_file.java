@@ -16,13 +16,13 @@ public class write_to_file {
 		    }
 	   }
 		
-		public void addRecords() {
-			x.format("%d\n", SlideShow.getPictureList().size());
+		public void addRecords(SlideShow SlideShow) {
+			x.format("%d\n", objects.SlideShow.getPictureList().size());
 			
 			//for (int i = 0; i <3; i++)
 			//x.format("%s%s%s", "ala", " bala", " portocala\n");
 			
-			Iterator<Slide> it = SlideShow.getSlideList().iterator();
+			Iterator<Slide> it = objects.SlideShow.getSlideList().iterator();
 			while(it.hasNext()) {
 				Slide currentSlide = it.next();
 				
