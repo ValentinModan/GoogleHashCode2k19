@@ -46,7 +46,7 @@ public class PictureDistance {
     public void name2() {
         Set<String> a_tag = new HashSet<>();
         a_tag.add("love");
-        a_tag.add("hate");
+        a_tag.add("pizza");
 
         Set<String> b_tag = new HashSet<>();
         b_tag.add("food");
@@ -57,7 +57,7 @@ public class PictureDistance {
 
         Picture b = new Picture(false, b_tag);
 
-        assertEquals(a.getDistance(b.getTags()),0);
+        assertEquals(a.getDistance(b.getTags()),1);
     }
     
     @Test
@@ -79,4 +79,25 @@ public class PictureDistance {
 
         assertEquals(a.getDistance(b.getTags()),0);
     }
+    
+    @Test
+    public void name4() {
+        Set<String> a_tag = new HashSet<>();
+        a_tag.add("c");
+        a_tag.add("hate");
+        a_tag.add("hello");
+        a_tag.add("b");
+
+        Set<String> b_tag = new HashSet<>();
+        b_tag.add("hate");
+        b_tag.add("b");
+        b_tag.add("hello");
+        b_tag.add("a");
+        Picture a = new Picture(false,a_tag);
+
+        Picture b = new Picture(false, b_tag);
+
+        assertEquals(a.getDistance(b.getTags()),1);
+    }
+    
 }
