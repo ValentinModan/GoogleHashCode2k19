@@ -5,8 +5,8 @@ import java.util.List;
 
 public class SlideShow {
 
-    private List<Picture> pictureList;
-    private List<Slide> slideList;
+    private static List<Picture> pictureList;
+    private static List<Slide> slideList;
 
     public void addSlide(Slide slide)
     {
@@ -29,14 +29,19 @@ public class SlideShow {
     public SlideShow() {
 
     }
+    
+    public static List<Slide> getSlideList() {
+    	return slideList;
+    }
 
-    public List<Picture> getPictureList() {
+    public static List<Picture> getPictureList() {
         return pictureList;
     }
 
     public void setPictureList(List<Picture> pictureList) {
         this.pictureList = pictureList;
     }
+
 
     public void addPicture(Picture picture,int position){
         pictureList.add(picture);
