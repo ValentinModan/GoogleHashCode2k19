@@ -7,7 +7,21 @@ public class Picture {
 
     private boolean isHorizontal;
 
-    private Set<String> tags;
+    private Set<String> tags = new HashSet<>();
+
+    private int pictureId;
+
+
+    public int getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(int pictureId) {
+        this.pictureId = pictureId;
+    }
+
+    public Picture() {
+    }
 
     public Picture(boolean isHorisontal, Set<String> tags) {
         this.isHorizontal = isHorisontal;
@@ -28,6 +42,11 @@ public class Picture {
 
     public void setTags(Set<String> tags) {
         this.tags = tags;
+    }
+
+    public void addTag(String tag)
+    {
+        tags.add(tag);
     }
 
     public int getDistance(Set<String> secondTags)
@@ -53,5 +72,14 @@ public class Picture {
         Set<String> x = firstSet;
         x.removeAll(secondSet);
         return x.size();
+    }
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "isHorizontal=" + isHorizontal +
+                ", tags=" + tags +
+                ", pictureId=" + pictureId +
+                '}';
     }
 }
