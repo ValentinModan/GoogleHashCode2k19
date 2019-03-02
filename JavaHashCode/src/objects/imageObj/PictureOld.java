@@ -1,9 +1,11 @@
-package objects;
+package objects.imageObj;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Picture {
+
+@Deprecated
+public class PictureOld {
 
     private boolean isHorizontal;
 
@@ -20,10 +22,10 @@ public class Picture {
         this.pictureId = pictureId;
     }
 
-    public Picture() {
+    public PictureOld() {
     }
 
-    public Picture(boolean isHorisontal, Set<String> tags) {
+    public PictureOld(boolean isHorisontal, Set<String> tags) {
         this.isHorizontal = isHorisontal;
         this.tags = tags;
     }
@@ -76,7 +78,7 @@ public class Picture {
 
     @Override
     public String toString() {
-        return "Picture{" +
+        return "PictureOld{" +
                 "isHorizontal=" + isHorizontal +
                 ", tags=" + tags +
                 ", pictureId=" + pictureId +

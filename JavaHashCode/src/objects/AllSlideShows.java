@@ -5,14 +5,14 @@ import java.util.List;
 
 public class AllSlideShows {
 
-    private List<SlideShow> slideShowList = new ArrayList<>();
+    private List<SlideShowOld> slideShowOldList = new ArrayList<>();
 
     public AllSlideShows() {
     }
 
 
-    public void addSlideShow(SlideShow slideShow)
+    public void addSlideShow(SlideShowOld slideShowOld)
     {
-        slideShowList.add(slideShow);
+        slideShowOldList.add(slideShowOld);
     }
 }

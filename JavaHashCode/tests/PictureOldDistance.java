@@ -1,4 +1,4 @@
-import objects.Picture;
+import objects.imageObj.PictureOld;
 import org.junit.Test;
 
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-public class PictureDistance {
+public class PictureOldDistance {
 
     @Test
     public void name() {
@@ -17,9 +17,9 @@ public class PictureDistance {
         Set<String> b_tag = new HashSet<>();
         b_tag.add("selfie");
         b_tag.add("pizza");
-        Picture a = new Picture(false,a_tag);
+        PictureOld a = new PictureOld(false,a_tag);
 
-        Picture b = new Picture(false, b_tag);
+        PictureOld b = new PictureOld(false, b_tag);
 
         assertEquals(a.getDistance(b.getTags()),1);
     }
@@ -35,9 +35,9 @@ public class PictureDistance {
         b_tag.add("garden");
         b_tag.add("hello");
         b_tag.add("pizza");
-        Picture a = new Picture(false,a_tag);
+        PictureOld a = new PictureOld(false,a_tag);
 
-        Picture b = new Picture(false, b_tag);
+        PictureOld b = new PictureOld(false, b_tag);
 
         assertEquals(a.getDistance(b.getTags()),1);
     }
@@ -53,9 +53,9 @@ public class PictureDistance {
         b_tag.add("garden");
         b_tag.add("hello");
         b_tag.add("pizza");
-        Picture a = new Picture(false,a_tag);
+        PictureOld a = new PictureOld(false,a_tag);
 
-        Picture b = new Picture(false, b_tag);
+        PictureOld b = new PictureOld(false, b_tag);
 
         assertEquals(a.getDistance(b.getTags()),1);
     }
@@ -73,9 +73,9 @@ public class PictureDistance {
         b_tag.add("garden");
         b_tag.add("hello");
         b_tag.add("pizza");
-        Picture a = new Picture(false,a_tag);
+        PictureOld a = new PictureOld(false,a_tag);
 
-        Picture b = new Picture(false, b_tag);
+        PictureOld b = new PictureOld(false, b_tag);
 
         assertEquals(a.getDistance(b.getTags()),0);
     }
@@ -93,9 +93,9 @@ public class PictureDistance {
         b_tag.add("b");
         b_tag.add("hello");
         b_tag.add("a");
-        Picture a = new Picture(false,a_tag);
+        PictureOld a = new PictureOld(false,a_tag);
 
-        Picture b = new Picture(false, b_tag);
+        PictureOld b = new PictureOld(false, b_tag);
 
         assertEquals(a.getDistance(b.getTags()),1);
     }

@@ -1,106 +1,99 @@
 package rng;
 
-import objects.AllPictures;
-import objects.Picture;
-import objects.Slide;
-import objects.SlideShow;
-
-import java.math.BigInteger;
 import java.util.Random;
-
-import static objects.AllPictures.getVerticalPictureList;
 
 public class SlideShowGenerator {
 
     public static Random rng = new Random();
-    public static SlideShow generateSlideShow(int n) {
-        SlideShow slideShow = new SlideShow();
+    /*@Deprecated
+    public static SlideShowOld generateSlideShow(int n) {
+        SlideShowOld slideShowOld = new SlideShowOld();
 
 
         for (int i = 1; i <= n; i++) {
-            Slide aSlide = generateSlide(slideShow);
-            if (aSlide == null)
+            SlideVertical aVerticalSlide = generateSlide(slideShowOld);
+            if (aVerticalSlide == null)
                 i = i;
             else {
-                BigInteger initial = slideShow.getPictureNumber();
+                BigInteger initial = slideShowOld.getPictureNumber();
 
 
-                if (aSlide.getFirst() == null)
-                    return slideShow;
-                BigInteger position = new BigInteger(String.valueOf(1 << (aSlide.getFirst().getPictureId())));
-                slideShow.setPictureNumber(initial.or(position));
+                if (aVerticalSlide.getFirst() == null)
+                    return slideShowOld;
+                BigInteger position = new BigInteger(String.valueOf(1 << (aVerticalSlide.getFirst().getPictureId())));
+                slideShowOld.setPictureNumber(initial.or(position));
 
-                if (aSlide.getSecond() != null) {
-                    BigInteger initial1 = slideShow.getPictureNumber();
-                    BigInteger newPosition = BigInteger.valueOf(1 << aSlide.getSecond().getPictureId());
-                    slideShow.setPictureNumber(initial1.or(newPosition));
-                    aSlide.setVertical(true);
+                if (aVerticalSlide.getSecond() != null) {
+                    BigInteger initial1 = slideShowOld.getPictureNumber();
+                    BigInteger newPosition = BigInteger.valueOf(1 << aVerticalSlide.getSecond().getPictureId());
+                    slideShowOld.setPictureNumber(initial1.or(newPosition));
+                    aVerticalSlide.setVertical(true);
                 }
 
 
-                slideShow.addSlide(aSlide);
+                slideShowOld.addSlide(aVerticalSlide);
             }
         }
-        return slideShow;
-    }
+        return slideShowOld;
+    }*/
 
-    public static Slide generateSlide(SlideShow slideShow) {
-        if (random(2) == 1 && AllPictures.getHorizontalPictureList().size() > 0) {
-            return randomHorizontal(slideShow);
+    /*public static SlideVertical generateSlide(SlideShowOld slideShowOld) {
+        if (random(2) == 1 && AllPicturesOld.getHorizontalPictureOldList().size() > 0) {
+            return randomHorizontal(slideShowOld);
         }
-        if (getVerticalPictureList().size() > 0) {
-            return randomVertical(slideShow);
+        if (getVerticalPictureOldList().size() > 0) {
+            return randomVertical(slideShowOld);
         }
 
         return null;
-    }
+    }*/
 
-    public static Slide randomHorizontal(SlideShow slideShow) {
-        Slide resultSlide = new Slide();
+    /*public static SlideVertical randomHorizontal(SlideShowOld slideShowOld) {
+        SlideVertical resultVerticalSlide = new SlideVertical();
 
         for (int i = 1; i <= 100; i++) {
             int position;
-            if (AllPictures.getHorizontalPictureList().size() == 1)
+            if (AllPicturesOld.getHorizontalPictureOldList().size() == 1)
                 position = 0;
             else
-                position = random(AllPictures.getHorizontalPictureList().size() - 1);
+                position = random(AllPicturesOld.getHorizontalPictureOldList().size() - 1);
 
             //poza nu exista deja in slideshow
-            BigInteger initial = slideShow.getPictureNumber();
+            BigInteger initial = slideShowOld.getPictureNumber();
             BigInteger bg = new BigInteger(String.valueOf(1 << position));
             BigInteger zero = new BigInteger(String.valueOf(0));
             if (initial.and(bg).equals(zero)) {
-                resultSlide.setFirst(AllPictures.getHorizontalPictureList().get(position));
+                resultVerticalSlide.setFirst(AllPicturesOld.getHorizontalPictureOldList().get(position));
 
-                AllPictures.horizontalPictureList.remove(position);
-                return resultSlide;
+                AllPicturesOld.horizontalPictureOldList.remove(position);
+                return resultVerticalSlide;
             }
         }
         return null;
-    }
+    }*/
 
-    public static Slide randomVertical(SlideShow slideShow) {
-        Slide resultSlide = new Slide();
+    /*public static SlideVertical randomVertical(SlideShowOld slideShowOld) {
+        SlideVertical resultVerticalSlide = new SlideVertical();
 
         BigInteger firstId = new BigInteger("0");
         for (int i = 1; i <= 10; i++) {
             int position;
-            if (getVerticalPictureList().size() == 1)
+            if (getVerticalPictureOldList().size() == 1)
                 position = 0;
             else {
 
-                position = random(getVerticalPictureList().size() - 1);
+                position = random(getVerticalPictureOldList().size() - 1);
             }
 
             //poza nu exista deja in slideshow
-            BigInteger initialSlideShowNumber = slideShow.getPictureNumber();
+            BigInteger initialSlideShowNumber = slideShowOld.getPictureNumber();
 
-            BigInteger pictureId = new BigInteger(String.valueOf(1 << getVerticalPictureList().get(position).getPictureId()));
+            BigInteger pictureId = new BigInteger(String.valueOf(1 << getVerticalPictureOldList().get(position).getPictureId()));
 
             BigInteger zero = new BigInteger("0");
             if (initialSlideShowNumber.and(pictureId).equals(zero)) {
-                resultSlide.setFirst(getVerticalPictureList().get(position));
-                AllPictures.verticalPictureList.remove(position);
+                resultVerticalSlide.setFirst(getVerticalPictureOldList().get(position));
+                AllPicturesOld.verticalPictureOldList.remove(position);
                 firstId = pictureId;
                 break;
             }
@@ -111,32 +104,32 @@ public class SlideShowGenerator {
         for (int i = 1; i <= 10; i++) {
             int position;
 
-            if (getVerticalPictureList().size() == 0)
+            if (getVerticalPictureOldList().size() == 0)
                 return null;
-            if (getVerticalPictureList().size() == 1)
+            if (getVerticalPictureOldList().size() == 1)
                 position = 0;
             else {
-                position = random(getVerticalPictureList().size() - 1);
+                position = random(getVerticalPictureOldList().size() - 1);
             }
 
 
-            BigInteger initialSlideShowNumber = slideShow.getPictureNumber();
+            BigInteger initialSlideShowNumber = slideShowOld.getPictureNumber();
 
             BigInteger pictureId = new BigInteger("1");
-            pictureId = pictureId.shiftLeft(getVerticalPictureList().get(position).getPictureId());
+            pictureId = pictureId.shiftLeft(getVerticalPictureOldList().get(position).getPictureId());
 
             BigInteger zero = new BigInteger("0");
             //poza nu exista deja in slideshow
             if (initialSlideShowNumber.and(pictureId).equals(zero) && !firstId.equals(pictureId)) {
-                resultSlide.setFirst(getVerticalPictureList().get(position));
-                AllPictures.horizontalPictureList.remove(position);
+                resultVerticalSlide.setFirst(getVerticalPictureOldList().get(position));
+                AllPicturesOld.horizontalPictureOldList.remove(position);
                 firstId = pictureId;
                 break;
             }
         }
 
         return null;
-    }
+    }*/
 
 
     public static int random(int x) {

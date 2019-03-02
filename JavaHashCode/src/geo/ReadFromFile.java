@@ -1,7 +1,7 @@
 package geo;
 
-import objects.AllPictures;
-import objects.Picture;
+import objects.AllPicturesOld;
+import objects.imageObj.PictureOld;
 
 import java.io.*;
 import java.util.*;
@@ -26,12 +26,12 @@ public class ReadFromFile {
 
 
             //set picture number
-            AllPictures.setPictureNumber(num);
+            AllPicturesOld.setPictureNumber(num);
 
 
             for (int i = 0; i < num; i++) {
 
-                Picture picture = new Picture();
+                PictureOld pictureOld = new PictureOld();
 
 
                 String position = s.next();
@@ -45,7 +45,7 @@ public class ReadFromFile {
                         String crttag = s.next();
                         tags.add(crttag);
 
-                        picture.addTag(crttag);
+                        pictureOld.addTag(crttag);
 
 
                     } catch (Exception ex) {
@@ -55,17 +55,17 @@ public class ReadFromFile {
                 }
 
 
-                //add picture id
-                picture.setPictureId(i);
+                //add pictureOld id
+                pictureOld.setPictureId(i);
 
                 if(position.equals("H"))
                 {
-                    picture.setHorizontal(true);
-                    AllPictures.addHorizontalPicture(picture);
+                    pictureOld.setHorizontal(true);
+                    AllPicturesOld.addHorizontalPicture(pictureOld);
                 }
                 else{
-                    picture.setHorizontal(false);
-                    AllPictures.addVerticalPicture(picture);
+                    pictureOld.setHorizontal(false);
+                    AllPicturesOld.addVerticalPicture(pictureOld);
                 }
             }
 

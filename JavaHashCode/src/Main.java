@@ -1,7 +1,7 @@
 import geo.Apples;
 import geo.write_to_file;
-import objects.AllPictures;
-import objects.SlideShow;
+import objects.AllPicturesOld;
+import objects.SlideShowOld;
 import rng.SlideShowGenerator;
 
 public class Main {
@@ -11,37 +11,37 @@ public class Main {
 
         Apples.readData();
 
-        //AllPictures.displayAllPictures();
+        //AllPicturesOld.displayAllPictures();
 
 
         System.out.println("Displaying slides");
 
-        SlideShow slideShowFinal = new SlideShow();
+        SlideShowOld slideShowOldFinal = new SlideShowOld();
         int finalSum = 0;
 
         for(int i=1;i<=100;i++) {
-            SlideShow slideShow = SlideShowGenerator.generateSlideShow(10000);
-            int sum = slideShow.computeSum();
+            SlideShowOld slideShowOld = SlideShowGenerator.generateSlideShow(10000);
+            int sum = slideShowOld.computeSum();
 
             if(sum>=finalSum)
             {
-                if(slideShowFinal.slideList.size()<slideShow.slideList.size())
-                slideShowFinal = slideShow;
+                if(slideShowOldFinal.verticalSlideList.size()< slideShowOld.verticalSlideList.size())
+                slideShowOldFinal = slideShowOld;
                 finalSum = sum;
             }
 
-            AllPictures.copy();
+            AllPicturesOld.copy();
 
         }
 
-        slideShowFinal.displaySlideShow();
+        slideShowOldFinal.displaySlideShow();
 
-        System.out.println(slideShowFinal.computeSum());
+        System.out.println(slideShowOldFinal.computeSum());
 
         write_to_file wtf = new write_to_file();
 
         wtf.openFile();
-        wtf.addRecords(slideShowFinal);
+        wtf.addRecords(slideShowOldFinal);
         wtf.closeFile();
     }
 }
