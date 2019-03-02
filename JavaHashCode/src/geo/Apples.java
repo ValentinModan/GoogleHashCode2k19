@@ -1,13 +1,12 @@
 package geo;
 
 public class Apples {
-    public static void readData() {
+    public static void readData(String fileName) {
 
         ReadFromFile r = new ReadFromFile();
-        r.openFile();
+        r.openFile(fileName);
         r.readFile();
         r.closeFile();
-
     }
 
 }

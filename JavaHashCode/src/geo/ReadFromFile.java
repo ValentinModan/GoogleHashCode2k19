@@ -1,82 +1,48 @@
 package geo;
 
-import objects.AllPicturesOld;
-import objects.imageObj.PictureOld;
+import controller.PictureConstructor;
+import objects.containers.PictureContainer;
+import objects.imageObj.Picture;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.util.Scanner;
 
 public class ReadFromFile {
 
-    private Scanner s;
-    private ArrayList<String> tags = new ArrayList();
+    private Scanner scanner;
 
-    public void openFile() {
+    public void openFile(String fileName) {
         try {
-            s = new Scanner(new File("b_lovely_landscapes.txt"));
+            scanner = new Scanner(new File(fileName));
         } catch (Exception e) {
-            System.out.println("could not find file");
+            System.out.println("Could not find file");
         }
     }
 
     public void readFile() {
-        if (s.hasNext()) {
-            String num1 = s.next();
+        if (scanner.hasNext()) {
+            String num1 = scanner.next();
             int num = Integer.parseInt(num1);
-
-
-            //set picture number
-            AllPicturesOld.setPictureNumber(num);
-
 
             for (int i = 0; i < num; i++) {
 
-                PictureOld pictureOld = new PictureOld();
+                String pictureType = scanner.next();
 
+                Picture picture = PictureConstructor.buildPicture(pictureType);
+                picture.setPictureId(i);
 
-                String position = s.next();
-
-                String no_of_tags1 = s.next();
-
-
-                int no_of_tags = Integer.parseInt(no_of_tags1);
-                for (int j = 0; j < no_of_tags; j++) {
-                    try {
-                        String crttag = s.next();
-                        tags.add(crttag);
-
-                        pictureOld.addTag(crttag);
-
-
-                    } catch (Exception ex) {
-                    }
-
-
+                int tagNumber = Integer.parseInt(scanner.next());
+                for (int j = 0; j < tagNumber; j++) {
+                    picture.addTag(scanner.next());
                 }
 
-
-                //add pictureOld id
-                pictureOld.setPictureId(i);
-
-                if(position.equals("H"))
-                {
-                    pictureOld.setHorizontal(true);
-                    AllPicturesOld.addHorizontalPicture(pictureOld);
-                }
-                else{
-                    pictureOld.setHorizontal(false);
-                    AllPicturesOld.addVerticalPicture(pictureOld);
-                }
+                PictureContainer.addPicture(picture);
             }
-
-            //Iterator<String> it = tags.iterator();
-            //	while(it.hasNext()) {
-            //	System.out.println(it.next());
         }
     }
 
 
     public void closeFile() {
-        s.close();
+        scanner.close();
     }
 }
